@@ -1,0 +1,106 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mx-auto">
+          <div style="background: rgba(158,168,188,0.4);border-radius:5px;">
+            <div class="card-body" style="opacity:10;">
+              <form class="form"
+                    [formGroup]="loginForm"
+                    novalidate="novalidate"
+                    id="kt_login_signin_form"
+                    (ngSubmit)="submit()">
+
+                <ng-container *ngIf="hasError">
+                  <div class="mb-10 alert alert-custom alert-light-danger alert-dismissible">
+                    <div class="alert-text">نام کاربری و رمزعبور صحیح نمی باشد</div>
+                  </div>
+                </ng-container>
+                <h1>ورود</h1>
+                <p style="color: #4c6477;">ورود به پنل کاربر</p>
+
+                <ng-container [ngTemplateOutlet]="formError"
+                              [ngTemplateOutletContext]="{
+      validation: 'required',
+      message: 'لطفا نام کاربری خود را وارد نمائید',
+      control: loginForm.controls['userName']
+    }"></ng-container>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-user-circle" aria-hidden="true" style="margin:2px;"></i>
+                    </span>
+                  </div>
+                  <input type="text"
+                         class="form-control"
+                         placeholder="نام کاربری"
+                         name="userName"
+                         formControlName="userName"
+                         [ngClass]="{ 'is-invalid': loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched }">
+
+                </div>
+                <ng-container [ngTemplateOutlet]="formError"
+                              [ngTemplateOutletContext]="{
+      validation: 'required',
+      message: 'لطفا رمزعبور خود را وارد نمائید',
+      control: loginForm.controls['password']
+    }"></ng-container>
+                <ng-container [ngTemplateOutlet]="formError"
+                              [ngTemplateOutletContext]="{
+      validation: 'minlength',
+      message: 'حداقل تعداد کاراکتر 8 عدد می باشد',
+      control: loginForm.controls['password']
+    }"></ng-container>
+
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa"
+                         [ngClass]="{
+          'fa-eye-slash': !fieldTextType,
+          'fa-eye': fieldTextType
+        }"
+                         (click)="toggleFieldTextType()"></i>
+                    </span>
+                  </div>
+                  <input [type]="fieldTextType ? 'text' : 'password'"
+                         class="form-control"
+                         placeholder="رمزعبور"
+                         name="password"
+                         formControlName="password"
+                         [ngClass]="{ 'is-invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched }">
+
+                </div>
+                <div class="row">
+                  <div class="col-6 text-right">
+                    <button type="button" class="btn btn-link px-0" id="forgetPassword-btn" style="color:white;">رمزعبور خود را فراموش کرده اید؟</button>
+                  </div>
+                  <div class="col-6">
+                    <button type="submit"
+                            id="kt_login_signin_submit"
+                            [disabled]="loginForm.invalid">
+                      ورود
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--<ng-template #formError
+             let-control="control"
+             let-message="message"
+             let-validation="validation">
+  <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+    <div class="fv-plugins-message-container">
+      <div class="fv-help-block">
+        {{ message }}
+      </div>
+    </div>
+  </ng-container>
+</ng-template>-->
