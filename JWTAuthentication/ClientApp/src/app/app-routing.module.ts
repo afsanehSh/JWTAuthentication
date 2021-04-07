@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './component/home/home.component';
-import { CounterComponent } from './component/counter/counter.component';
-import { FetchDataComponent } from './component/fetch-data/fetch-data.component';
 import { AuthGuardService } from './component/auth/services/authGuard/auth-guard.service';
-import { LoginComponent } from './component/auth/login/login.component';
 
 export const routes: Routes = [
   {

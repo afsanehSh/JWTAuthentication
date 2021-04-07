@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -15,6 +16,7 @@ export class AuthService {
   public currentUser: Observable<UserModel>;
 
   constructor(private http: HttpClient,
+    private router: Router,
     @Inject('BASE_URL') private baseUrl: string) {
 
     this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
@@ -56,6 +58,8 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+    this.router.navigate(['/auth/login'], {
+      queryParams: {},
+    });
   }
 }

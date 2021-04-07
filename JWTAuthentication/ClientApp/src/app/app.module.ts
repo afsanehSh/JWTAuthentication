@@ -4,10 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './component/nav-menu/nav-menu.component';
-import { HomeComponent } from './component/home/home.component';
-import { CounterComponent } from './component/counter/counter.component';
-import { FetchDataComponent } from './component/fetch-data/fetch-data.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './component/auth/auth.module';
 import { InterceptService } from './component/auth/services/intercept/intercept.service';
@@ -16,14 +12,10 @@ import { InterceptService } from './component/auth/services/intercept/intercept.
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
