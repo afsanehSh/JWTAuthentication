@@ -40,40 +40,41 @@ namespace JWTAuthentication.Services
         //    var userProfileImg = _dbContext.Set<AppUser>().Where(x => x.UserName == userName).FirstOrDefault();
         //    return userProfileImg?.UserImage;
         //}
-        
+
         //public string GetUserImageById(int userId)
         //{
         //    var userProfileImg = _dbContext.Set<AppUser>().Where(x => x.Id == userId).FirstOrDefault();
         //    return userProfileImg?.UserImage;
         //}
 
-        //public ValidationResult SignUpUser(SignUpViewModel signUpModel)
-        //{
-        //    _repository.BeginTransaction();
-        //    ValidationResult submitResult = new ValidationResult();
-        //    try
-        //    {
-        //        var user = Mapper.Map<AppUser>(signUpModel);
-        //        submitResult = _repository.DoSubmit(user);
-        //        if (submitResult.IsOk() && user.IsAdmin == null)
-        //        {
-        //            //submitResult = AddUserRole(user.Id, AppRoles.User);
-                   
-        //        }
-        //        if (submitResult.IsOk())
-        //        {
-        //            _repository.CommitTransaction();
-        //        }
-        //        else
-        //        {
-        //            _repository.RollbackTransaction();
-        //        }
-        //    }catch(Exception e)
-        //    {
+        public ValidationResult SignUpUser(SignUpViewModel signUpModel)
+        {
+            EntityRepository.BeginTransaction();
+            ValidationResult submitResult = new ValidationResult();
+            try
+            {
+                var user = Mapper.Map<AppUser>(signUpModel);
+                submitResult = DoSubmit(user);
+                if (submitResult.IsOk() && user.IsAdmin == null)
+                {
+                    //submitResult = AddUserRole(user.Id, AppRoles.User);
 
-        //    }
-        //    return submitResult;
-        //}
+                }
+                if (submitResult.IsOk())
+                {
+                    EntityRepository.CommitTransaction();
+                }
+                else
+                {
+                    EntityRepository.RollbackTransaction();
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return submitResult;
+        }
 
         //public ValidationResult ChangePassword(PasswordViewModel passwordModel)
         //{

@@ -41,19 +41,16 @@ export class AuthService {
       }));
   }
 
-  //register(user: UserModel): Observable<any> {
-  //  let httpHeaders = new HttpHeaders();
-  //  httpHeaders = httpHeaders.set('Content-Type', 'application/json');
-  //  return this.http.post<UserModel>(API_USERS_URL, user, { headers: httpHeaders })
-  //    .pipe(
-  //      map((res: UserModel) => {
-  //        return res;
-  //      }),
-  //      catchError(err => {
-  //        return null;
-  //      })
-  //    );
-  //}
+  registration(user: UserModel): Observable<any> {
+    let httpHeaders = new HttpHeaders();
+    httpHeaders = httpHeaders.set('Content-Type', 'application/json');
+    return this.http.post<UserModel>(this.baseUrl + 'AppUser/SignUpUser', user, { headers: httpHeaders })
+      .pipe(
+        map((res: UserModel) => {
+          return res;
+        })
+      );
+  }
 
 
   logout() {

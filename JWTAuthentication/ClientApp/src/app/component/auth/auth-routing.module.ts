@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 const routes: Routes = [
@@ -20,10 +21,10 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent
       },
-      //{
-      //  path: 'registration',
-      //  component: RegistrationComponent
-      //},
+      {
+        path: 'registration',
+        component: RegistrationComponent
+      },
       //{
       //  path: 'forgot-password',
       //  component: ForgotPasswordComponent

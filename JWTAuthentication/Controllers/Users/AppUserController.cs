@@ -1,4 +1,5 @@
-﻿using JWTAuthentication.Interfaces;
+﻿using JWTAuthentication.Common;
+using JWTAuthentication.Interfaces;
 using JWTAuthentication.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -53,13 +54,13 @@ namespace JWTAuthentication.Controllers.Users
         //    return profilePhoto;
         //}
 
-        //[AllowAnonymous]
-        //[HttpPost("SignUpUser")]
-        //public IActionResult SignUpUser([FromBody] SignUpViewModel signUpModel)
-        //{
-        //    var result = _appUserService.SignUpUser(signUpModel);
-        //    return ValidationResponse(result);
-        //}
+        [AllowAnonymous]
+        [HttpPost("SignUpUser")]
+        public IActionResult SignUpUser([FromBody] SignUpViewModel signUpModel)
+        {
+            var result = _appUserService.SignUpUser(signUpModel);
+            return Ok(result);
+        }
 
         //[AllowAnonymous]
         //[HttpPut("ChangePassword")]
@@ -92,5 +93,6 @@ namespace JWTAuthentication.Controllers.Users
         //    _appUserService.UploadUserImage(file, id);
         //    return Ok();
         //}
+
     }
 }

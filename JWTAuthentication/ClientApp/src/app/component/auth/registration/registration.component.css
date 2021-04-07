@@ -1,0 +1,21 @@
+
+#signUp-header {
+  padding-top: 10px;
+  text-align: center;
+}
+
+#user-account-header {
+  text-align: center;
+}
+
+input:hover {
+  border: 2px solid #a4bcb1;
+}
+
+#signUp-btn {
+  background-color: #3eb265;
+}
+
+  #signUp-btn:hover {
+    background-color: #26994D;
+  }
