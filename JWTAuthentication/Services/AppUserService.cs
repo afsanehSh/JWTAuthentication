@@ -76,17 +76,17 @@ namespace JWTAuthentication.Services
             return submitResult;
         }
 
-        //public ValidationResult ChangePassword(PasswordViewModel passwordModel)
-        //{
-        //    ValidationResult validationResult = new ValidationResult();
-        //    var userToChangePass = _dbContext.Set<AppUser>().Where(u => u.UserName == GetCurrentUser().UserName && u.Password == passwordModel.CurrentPassword).FirstOrDefault();
-        //    if (userToChangePass != null)
-        //    {
-        //        userToChangePass.Password = passwordModel.Password;
-        //        validationResult = _repository.DoSubmit(userToChangePass);
-        //    }
-        //    return validationResult;
-        //}
+        public ValidationResult ChangePassword(PasswordViewModel passwordModel)
+        {
+            ValidationResult validationResult = new ValidationResult();
+            var userToChangePass = EntityRepository.GetByCriteria(u => u.UserName == GetCurrentUser().UserName && u.Password == passwordModel.CurrentPassword).FirstOrDefault();
+            if (userToChangePass != null)
+            {
+                userToChangePass.Password = passwordModel.Password;
+                validationResult = DoSubmit(userToChangePass);
+            }
+            return validationResult;
+        }
 
         //private ValidationResult AddUserRole(int userId, string roleName)
         //{
@@ -100,27 +100,27 @@ namespace JWTAuthentication.Services
         //    return submitResult;
         //}
 
-        //public ValidationResult AddAppUser(AppUserModel model)
-        //{
-        //    var appUser = Mapper.Map<AppUser>(model);
-        //    var submitRes = _repository.DoSubmit(appUser);
-        //    return submitRes;
-        //}
+        public ValidationResult AddAppUser(AppUserModel model)
+        {
+            var appUser = Mapper.Map<AppUser>(model);
+            var submitRes = DoSubmit(appUser);
+            return submitRes;
+        }
 
-        //public ValidationResult UpdateAppUser(AppUserModel model)
-        //{
-        //    var appUser = Mapper.Map<AppUser>(model);
-        //    appUser.UserImage = model.UserImage;
-        //    var updateUser = _repository.DoSubmit(appUser);
-        //    return updateUser;
-        //}
+        public ValidationResult UpdateAppUser(AppUserModel model)
+        {
+            var appUser = Mapper.Map<AppUser>(model);
+            appUser.UserImage = model.UserImage;
+            var updateUser = DoSubmit(appUser);
+            return updateUser;
+        }
 
         //public void UploadUserImage(IFormFile file, int id)
         //{
         //    var filePath = FileHelper.SaveFile(file, ContentFileHelper.UserProfilePicture);
         //    var entity = EntityRepository.GetByIdAsync(id).Result;
         //    entity.UserImage = filePath;
-        //    _repository.DoSubmit(entity);
+        //    DoSubmit(entity);
         //}
     }
 }

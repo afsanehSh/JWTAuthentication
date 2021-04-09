@@ -45,14 +45,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\core\services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\component\auth\registration\confirm-password.validator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\models\auth.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\models\exception.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\models\user.model.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\core\services\role\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

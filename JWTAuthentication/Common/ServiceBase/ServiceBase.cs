@@ -95,5 +95,16 @@ namespace JWTAuthentication.Common.ServiceBase
             return new ValidationResult();
         }
 
+        public async Task<T> LoadEntity(int entityId)
+        {
+            return await EntityRepository.GetByIdAsync(entityId);
+        }
+
+        public async Task DeleteEntity(int entityId)
+        {
+            var entity = await LoadEntity(entityId);
+            EntityRepository.Delete(entity);
+        }
+
     }
 }

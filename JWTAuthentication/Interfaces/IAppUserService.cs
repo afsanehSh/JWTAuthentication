@@ -16,8 +16,8 @@ namespace JWTAuthentication.Interfaces
         //string GetUserProfileImage(string userName = "");
         //string GetUserImageById(int userId);
         ValidationResult SignUpUser(SignUpViewModel signUpModel);
-        //ValidationResult ChangePassword(PasswordViewModel passwordModel);
-        //ValidationResult AddAppUser(AppUserModel model);
-        //ValidationResult UpdateAppUser(AppUserModel model);
+        ValidationResult ChangePassword(PasswordViewModel passwordModel);
+        ValidationResult AddAppUser(AppUserModel model);
+        ValidationResult UpdateAppUser(AppUserModel model);
     }
 }

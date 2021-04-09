@@ -62,29 +62,29 @@ namespace JWTAuthentication.Controllers.Users
             return Ok(result);
         }
 
-        //[AllowAnonymous]
-        //[HttpPut("ChangePassword")]
-        //public IActionResult ChangePassword([FromBody] PasswordViewModel passwordModel)
-        //{
-        //    var result = _appUserService.ChangePassword(passwordModel);
-        //    return ValidationResponse(result);
-        //}
+        [AllowAnonymous]
+        [HttpPut("ChangePassword")]
+        public IActionResult ChangePassword([FromBody] PasswordViewModel passwordModel)
+        {
+            var result = _appUserService.ChangePassword(passwordModel);
+            return Ok(result);
+        }
 
-        //[AllowAnonymous]
-        //[HttpPost("AddAppUser")]
-        //public IActionResult AddAppUser(AppUserDto model)
-        //{
-        //    var appUser = _appUserService.AddAppUser(model);
-        //    return Ok(appUser);
-        //}
+        [AllowAnonymous]
+        [HttpPost("AddAppUser")]
+        public IActionResult AddAppUser(AppUserModel model)
+        {
+            var appUser = _appUserService.AddAppUser(model);
+            return Ok(appUser);
+        }
 
-        //[AllowAnonymous]
-        //[HttpPut("UpdateAppUser")]
-        //public IActionResult UpdateAppUser(AppUserDto model)
-        //{
-        //    var result = _appUserService.UpdateAppUser(model);
-        //    return ValidationResponse(result);
-        //}
+        [AllowAnonymous]
+        [HttpPut("UpdateAppUser")]
+        public IActionResult UpdateAppUser(AppUserModel model)
+        {
+            var result = _appUserService.UpdateAppUser(model);
+            return Ok(result);
+        }
 
         //[HttpPut("UploadUserImage/{id}")]
         //[RequestFormLimits(MultipartBodyLengthLimit = 209715200)]

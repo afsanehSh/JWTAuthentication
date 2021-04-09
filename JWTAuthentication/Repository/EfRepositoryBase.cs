@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace JWTAuthentication.Repository
 {
@@ -60,6 +61,38 @@ namespace JWTAuthentication.Repository
             }
 
         }
+
+        public void Delete(T entity)
+        {
+            try
+            {
+                _dataset.Remove(entity);
+                _dbContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+        }
+
+        public virtual async Task<T> GetByIdAsync(int id, bool includeAll = false)
+        {
+            var query = _dataset.AsQueryable();
+            if (includeAll)
+            {
+                var navigations = _dbContext.Model.FindEntityType(typeof(T))
+                    .GetDerivedTypesInclusive()
+                    .SelectMany(type => type.GetNavigations())
+                    .Distinct();
+
+                foreach (var property in navigations)
+                    query = query.Include(property.Name);
+            }
+            return await query.SingleOrDefaultAsync(n => n.Id == id);
+        }
+
         public IDbContextTransaction BeginTransaction()
         {
             if (_dbContext.Database.CurrentTransaction == null)
@@ -113,6 +146,9 @@ namespace JWTAuthentication.Repository
             return query.Where(criteria);
         }
 
-
+        public Task DeleteEntity(int entityId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
