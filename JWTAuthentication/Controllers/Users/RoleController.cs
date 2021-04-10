@@ -21,14 +21,14 @@ namespace JWTAuthentication.Controllers.Users
 
         }
 
-        [HttpGet("GetRoleList")]
+        [HttpGet()]
         public ActionResult<IEnumerable<Role>> GetAll()
         {
             var entity = _roleService.GetRoleList().ToList();
             return Ok(entity);
         }
 
-        [HttpGet("GetRoleById/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult> GetRoleById([FromRoute] int id)
         {
             var entity = _roleService.LoadRole(id);
@@ -36,7 +36,7 @@ namespace JWTAuthentication.Controllers.Users
         }
 
         [AllowAnonymous]
-        [HttpPut("UpdateRole")]
+        [HttpPut()]
         public ActionResult UpdateRole([FromBody] Role role)
         {
             if (ModelState.IsValid)
@@ -52,7 +52,7 @@ namespace JWTAuthentication.Controllers.Users
         }
 
         [AllowAnonymous]
-        [HttpPost("AddRole")]
+        [HttpPost()]
         public IActionResult CreateRole([FromBody] Role role)
         {
             if (ModelState.IsValid)

@@ -6,6 +6,8 @@ import { UsersComponent } from './users/users.component';
 import { UsersUpdateComponent } from './users/users-update/users-update.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { UserManagementComponent } from './user-management.component';
+import { UserManagementRoutingModule } from './user-management-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +21,10 @@ import { UserManagementComponent } from './user-management.component';
     ChangePasswordComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    UserManagementRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class UserManagementModule { }

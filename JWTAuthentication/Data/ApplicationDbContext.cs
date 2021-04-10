@@ -28,7 +28,10 @@ namespace JWTAuthentication.Data
 
             builder.Entity<AppUser>()
                 .Property(o => o.Id).HasDefaultValueSql("NEXT VALUE FOR [dbo].[AppUserSeqId]");
+            builder.Entity<Role>()
+                .Property(o => o.Id).HasDefaultValueSql("NEXT VALUE FOR [dbo].[RoleSeqId]");
         }
         public DbSet<AppUser> AppUser { get; set; }
+        public DbSet<Role> Role { get; set; }
     }
 }

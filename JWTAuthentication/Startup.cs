@@ -51,6 +51,7 @@ namespace JWTAuthentication
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IAppUserService, AppUserService>();
+            services.AddTransient<IRoleService, RoleService>();
 
             #endregion
 

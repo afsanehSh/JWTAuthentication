@@ -3,8 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
-import { UserModel } from '../models/user.model';
+import { UserModel } from '../../models/user.model';
 
 
 @Injectable({
