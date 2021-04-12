@@ -6,6 +6,7 @@ import { RolesComponent } from './roles/roles.component';
 import { RolesUpdateComponent } from './roles/roles-update/roles-update.component';
 import { UsersComponent } from './users/users.component';
 import { UsersUpdateComponent } from './users/users-update/users-update.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'user/edit/:id',
         component: UsersUpdateComponent,
+      },
+      {
+        path: 'change-password/:id',
+        component: ChangePasswordComponent
       },
     ]
   }
