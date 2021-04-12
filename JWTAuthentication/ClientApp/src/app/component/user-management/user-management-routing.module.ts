@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserManagementComponent } from './user-management.component';
 import { RolesComponent } from './roles/roles.component';
 import { RolesUpdateComponent } from './roles/roles-update/roles-update.component';
+import { UsersComponent } from './users/users.component';
+import { UsersUpdateComponent } from './users/users-update/users-update.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,18 @@ const routes: Routes = [
       {
         path: 'role/edit/:id',
         component: RolesUpdateComponent,
+      },
+      {
+        path: 'userList',
+        component: UsersComponent
+      },
+      {
+        path: 'user/add',
+        component: UsersUpdateComponent,
+      },
+      {
+        path: 'user/edit/:id',
+        component: UsersUpdateComponent,
       },
     ]
   }

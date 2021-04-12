@@ -19,5 +19,9 @@ namespace JWTAuthentication.Interfaces
         ValidationResult ChangePassword(PasswordViewModel passwordModel);
         ValidationResult AddAppUser(AppUserModel model);
         ValidationResult UpdateAppUser(AppUserModel model);
+        AppUser LoadUser(int userId);
+        Task DeleteAppUser(int entityId);
+        IEnumerable<AppUser> GetAppUserList();
+
     }
 }

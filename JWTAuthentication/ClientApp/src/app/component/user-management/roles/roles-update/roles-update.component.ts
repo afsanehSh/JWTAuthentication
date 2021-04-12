@@ -59,7 +59,7 @@ export class RolesUpdateComponent implements OnInit {
       }),
     ).subscribe((res: RoleModel) => {
       if (!res) {
-        this.router.navigate(['/user-management/roles'], { relativeTo: this.route });
+        this.router.navigate(['/user-management/roleList'], { relativeTo: this.route });
       }
 
       this.role = res;
@@ -127,7 +127,7 @@ export class RolesUpdateComponent implements OnInit {
         this.router.navigate(['/user-management/roleList']);
       }),
       catchError((errorMessage) => {
-        console.error('UPDATE ERROR', errorMessage);
+        console.error('create ERROR', errorMessage);
         return of(this.role);
       })
     ).subscribe(res => this.role = res as RoleModel);

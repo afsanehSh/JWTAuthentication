@@ -1,4 +1,5 @@
 ﻿using JWTAuthentication.Common;
+using JWTAuthentication.Entities;
 using JWTAuthentication.Interfaces;
 using JWTAuthentication.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -70,8 +71,22 @@ namespace JWTAuthentication.Controllers.Users
             return Ok(result);
         }
 
+        [HttpGet()]
+        public ActionResult<IEnumerable<AppUser>> GetAll()
+        {
+            var entity = _appUserService.GetAppUserList().ToList();
+            return Ok(entity);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetAppUserById([FromRoute] int id)
+        {
+            var entity = _appUserService.LoadUser(id);
+            return Ok(entity);
+        }
+
         [AllowAnonymous]
-        [HttpPost("AddAppUser")]
+        [HttpPost()]
         public IActionResult AddAppUser(AppUserModel model)
         {
             var appUser = _appUserService.AddAppUser(model);
@@ -79,7 +94,7 @@ namespace JWTAuthentication.Controllers.Users
         }
 
         [AllowAnonymous]
-        [HttpPut("UpdateAppUser")]
+        [HttpPut()]
         public IActionResult UpdateAppUser(AppUserModel model)
         {
             var result = _appUserService.UpdateAppUser(model);

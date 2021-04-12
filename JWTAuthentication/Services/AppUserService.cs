@@ -115,6 +115,21 @@ namespace JWTAuthentication.Services
             return updateUser;
         }
 
+        public async Task DeleteAppUser(int entityId)
+        {
+            var entity = await LoadEntity(entityId);
+            EntityRepository.Delete(entity);
+        }
+        public IEnumerable<AppUser> GetAppUserList()
+        {
+            return EntityRepository.ListAll().ToList();
+        }
+
+        public AppUser LoadUser(int userId)
+        {
+            return EntityRepository.GetByCriteria(x => x.Id == userId).FirstOrDefault();
+        }
+
         //public void UploadUserImage(IFormFile file, int id)
         //{
         //    var filePath = FileHelper.SaveFile(file, ContentFileHelper.UserProfilePicture);

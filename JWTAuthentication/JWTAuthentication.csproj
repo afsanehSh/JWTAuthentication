@@ -22,6 +22,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\component\auth\registration\confirm-password.validator.ts" />
     <None Remove="ClientApp\src\app\core\models\auth.model.ts" />
+    <None Remove="ClientApp\src\app\core\models\change-password.model.ts" />
     <None Remove="ClientApp\src\app\core\models\exception.model.ts" />
     <None Remove="ClientApp\src\app\core\models\role.model.ts" />
     <None Remove="ClientApp\src\app\core\models\user.model.ts" />
@@ -48,6 +49,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\component\auth\registration\confirm-password.validator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\models\auth.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\core\models\change-password.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\models\exception.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\models\role.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\models\user.model.ts" />
