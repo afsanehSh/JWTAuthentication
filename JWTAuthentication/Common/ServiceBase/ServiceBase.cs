@@ -17,13 +17,13 @@ namespace JWTAuthentication.Common.ServiceBase
             IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
             EntityRepository = entityRepository;
-            HttpContextAccessor = httpContextAccessor;
+            _HttpContextAccessor = httpContextAccessor;
             Mapper = mapper;
         }
         public IMapper Mapper { get; }
         public IAsyncRepository<T> EntityRepository { get; }
 
-        public IHttpContextAccessor HttpContextAccessor { get; }
+        public IHttpContextAccessor _HttpContextAccessor { get; }
 
 
         public virtual ValidationResult DoSubmit(T entity)
@@ -81,9 +81,9 @@ namespace JWTAuthentication.Common.ServiceBase
                     createDateProp.SetValue(entity, DateTime.Now);
                 }
                 var userIdProp = typeof(T).GetProperty("UserId");
-                if (userIdProp != null && userIdProp.PropertyType == typeof(int) && HttpContextAccessor.HttpContext.User.Identity?.Name != null)
+                if (userIdProp != null && userIdProp.PropertyType == typeof(int) && _HttpContextAccessor.HttpContext.User.Identity?.Name != null)
                 {
-                    var userId = int.Parse(HttpContextAccessor.HttpContext.User.Claims.FirstOrDefault(n => n.Type == "UserId").Value);
+                    var userId = int.Parse(_HttpContextAccessor.HttpContext.User.Claims.FirstOrDefault(n => n.Type == "UserId").Value);
                     userIdProp.SetValue(entity, userId);
                 }
                 EntityRepository.Add(entity);

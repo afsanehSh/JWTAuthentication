@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace JWTAuthentication.Services
 {
     public class AppUserService : ServiceBase<AppUser>, IAppUserService
@@ -32,7 +33,7 @@ namespace JWTAuthentication.Services
 
          public AppUser GetCurrentUser()
         {
-            return GetUserByName(HttpContextAccessor.HttpContext.User.Identity.Name);
+            return GetUserByName(_HttpContextAccessor.HttpContext.User.Identity.Name);
         }
 
         //public string GetUserProfileImage(string userName = "")
